@@ -12,7 +12,7 @@ title: |-
 summary: |
   Bitrise step that reports build info to EZDeploy
 description: |
-  Bitrise step that reports build info to EZDeploy
+  Reports build info to dev and prod EZDeploy.
 website: https://github.com/WhoopInc/bitrise-step-report-build
 source_code_url: https://github.com/WhoopInc/bitrise-step-report-build
 support_url: https://github.com/WhoopInc/bitrise-step-report-build/issues
@@ -44,10 +44,9 @@ host_os_tags:
 type_tags:
   - utility
 
-is_requires_admin_user: true
-is_always_run: false
-is_skippable: false
-run_if: ""
+is_requires_admin_user: false
+is_always_run: true
+is_skippable: true
 
 deps:
   brew:
@@ -64,24 +63,82 @@ toolkit:
 
 
 inputs:
-  - example_step_input: Default Value - you can leave this empty if you want to
+  - environment:
     opts:
-      title: "Example Step Input"
-      summary: Summary. No more than 2-3 sentences.
-      description: |
-        Description of this input.
-
-        Can be Markdown formatted text.
-      is_expand: true
+      title: EZDeploy environment
+      summary: |-
+        Specifies the EZDeploy environment to send the Bitrise build to.
+      value_options:
+        - "dev"
+        - "prod"
       is_required: true
-      value_options: []
+  - started_at:
+      opts:
+        title: Time build started at
+        summary: |-
+          The time the build started at, in the format "%Y-%m-%dT%H:%M:%S.%3N%z"
+        is_required: true
+  - completed_at:
+      opts:
+        title: Time build completed at
+        summary: |-
+          The time the build completed at, in the format "%Y-%m-%dT%H:%M:%S.%3N%z"
+        is_required: true
+  - total_duration:
+      opts:
+        title: Build duration in ms
+        summary: |-
+          (time completed at - time started at) in milliseconds
+        is_required: true
+  - repository: $BITRISEIO_GIT_REPOSITORY_SLUG
+    opts:
+      title: Github repository associated with build
+      is_expand: true
+    is_required: true
+  - branch: $BITRISE_GIT_BRANCH
+    opts:
+      title: Github branch associated with build
+      is_expand: true
+    is_required: true
+  - build_num: $BITRISE_BUILD_NUMBER
+    opts:
+      title: Build number associated with build
+      is_expand: true
+    is_required: true
+  - commit_sha: $BITRISE_GIT_COMMIT
+      opts:
+        title: Hash for commit that triggered build
+        is_expand: true
+      is_required: true
+  - status: $BITRISE_BUILD_STATUS
+      opts:
+        title: Result of build - can be either (0 - successful, 1 - failed)
+        is_expand: true
+      is_required: true
+  - build_url: $BITRISE_BUILD_URL
+      opts:
+        title: URL on bitrise.io that shows build details
+        is_expand: true
+      is_required: true
+  - github_username: $GIT_CLONE_COMMIT_AUTHOR_NAME
+      opts:
+        title: Github username linked with committer
+        is_expand: true
+      is_required: true
+  - message: $BITRISE_GIT_MESSAGE
+      opts:
+        title: The commit message, PR title or manual trigger message
+        is_expand: true
+      is_required: true
+  - auth_token: $EZ_DEPLOY_AUTH_TOKEN
+      opts:
+        title: Token used to authenticate with EZDeploy
+        is_sensitive: true
+        is_expand: true
+      is_required: true
 
 outputs:
-  - EXAMPLE_STEP_OUTPUT:
+  - response_code:
     opts:
-      title: "Example Step Output"
-      summary: Summary. No more than 2-3 sentences.
-      description: |
-        Description of this output.
-
-        Can be Markdown formatted text.
+      title: "HTTP Response Code"
+      summary: Reponse code returned by EZDeploy API
