@@ -36,8 +36,8 @@ toolkit:
 
 inputs:
   - auth_token: $EZ_DEPLOY_AUTH_TOKEN
-      opts:
-        title: "Token used to authenticate with EZDeploy"
-        is_sensitive: true
-        is_expand: true
-        is_required: true
+    opts:
+      title: "Token used to authenticate with EZDeploy"
+      is_sensitive: true
+      is_expand: true
+      is_required: true
