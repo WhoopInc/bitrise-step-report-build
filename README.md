@@ -1,9 +1,8 @@
-# report-build
+# report-build - Bitrise step that reports build info to EZDeploy
+## 🔴 This is a public repository 🔴
 
-Bitrise step that reports build info to EZDeploy
 
-
-## How to use this Step
+### How to use this Step
 
 Can be run directly with the [bitrise CLI](https://github.com/bitrise-io/bitrise),
 just `git clone` this repository, `cd` into it's folder in your Terminal/Command Line
@@ -31,7 +30,7 @@ envs:
 - A_SECRET_PARAM_TWO: the value for secret two
 ```
 
-## How to create your own step
+### How to create your own step
 
 1. Create a new git repository for your step (**don't fork** the *step template*, create a *new* repository)
 2. Copy the [step template](https://github.com/bitrise-steplib/step-template) files into your repository
@@ -61,7 +60,7 @@ If you want to use your step in your project's `bitrise.yml`:
 You can find more examples of step reference styles
 in the [bitrise CLI repository](https://github.com/bitrise-io/bitrise/blob/master/_examples/tutorials/steps-and-workflows/bitrise.yml#L65).
 
-## How to contribute to this Step
+### How to contribute to this Step
 
 1. Fork this repository
 2. `git clone` it
@@ -77,7 +76,7 @@ in the [bitrise CLI repository](https://github.com/bitrise-io/bitrise/blob/maste
 7. Once you're done just commit your changes & create a Pull Request
 
 
-## Share your own Step
+### Share your own Step
 
 You can share your Step or step version with the [bitrise CLI](https://github.com/bitrise-io/bitrise). If you use the `bitrise.yml` included in this repository, all you have to do is:
 

@@ -43,15 +43,12 @@ toolkit:
 
 
 inputs:
-  - environment:
-    opts:
-      title: EZDeploy environment
-      summary: |-
-        Specifies the EZDeploy environment to send the Bitrise build to.
-      value_options:
-        - "dev"
-        - "prod"
-      is_required: true
+  - url:
+      opts:
+        title: EZDeploy API endpoint
+        summary: |-
+          Specifies the endpoint to send the Bitrise build info to
+        is_required: true
   - started_at:
       opts:
         title: Time build started at
