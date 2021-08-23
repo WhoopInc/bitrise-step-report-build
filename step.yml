@@ -68,20 +68,20 @@ inputs:
           (time completed at - time started at) in milliseconds
         is_required: true
   - repository: $BITRISEIO_GIT_REPOSITORY_SLUG
-    opts:
-      title: Github repository associated with build
-      is_expand: true
-      is_required: true
+      opts:
+        title: Github repository associated with build
+        is_expand: true
+        is_required: true
   - branch: $BITRISE_GIT_BRANCH
-    opts:
-      title: Github branch associated with build
-      is_expand: true
-      is_required: true
+      opts:
+        title: Github branch associated with build
+        is_expand: true
+        is_required: true
   - build_num: $BITRISE_BUILD_NUMBER
-    opts:
-      title: Build number associated with build
-      is_expand: true
-      is_required: true
+      opts:
+        title: Build number associated with build
+        is_expand: true
+        is_required: true
   - commit_sha: $BITRISE_GIT_COMMIT
       opts:
         title: Hash for commit that triggered build
