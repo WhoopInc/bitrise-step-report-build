@@ -28,15 +28,19 @@ toolkit:
 inputs:
   - url:
       opts:
+        is_expand: true
         is_required: true
   - started_at:
       opts:
+        is_expand: true
         is_required: true
   - completed_at:
       opts:
+        is_expand: true
         is_required: true
   - total_duration:
       opts:
+        is_expand: true
         is_required: true
   - repository: $BITRISEIO_GIT_REPOSITORY_SLUG
       opts:
