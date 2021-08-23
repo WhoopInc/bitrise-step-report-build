@@ -17,8 +17,9 @@ total_duration_milliseconds = os.environ.get('total_duration')
 build_url = os.environ.get('build_url')
 github_username = os.environ.get('github_username')
 url = os.environ.get('url')
+auth_token = os.environ.get('auth_token')
 print(os.environ.keys()
-token = os.environ.get('auth_token')
+
 ticket = None
 branch_match = re.search(jira_ticket_pattern, branch)
 message_match = re.search(jira_ticket_pattern, str(message))
@@ -39,7 +40,7 @@ payload = {
     "build_url": build_url,
     "github_username": github_username
 }
-request_headers = {'Authorization': token}
+request_headers = {'Authorization': auth_token}
 r = requests.post(url, json=payload, headers=request_headers)
 print("response:")
 print(r)
