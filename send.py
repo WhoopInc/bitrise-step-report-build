@@ -21,9 +21,9 @@ ticket = None
 branch_match = re.search(jira_ticket_pattern, branch)
 message_match = re.search(jira_ticket_pattern, str(message))
 if branch_match is not None:
-ticket=branch_match.group(0)
+    ticket=branch_match.group(0)
 elif message_match is not None:
-ticket=message_match.group(0)
+    ticket=message_match.group(0)
 payload = {
     "repository": repository,
     "branch": branch,
