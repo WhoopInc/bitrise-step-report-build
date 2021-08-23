@@ -30,15 +30,15 @@ inputs:
       opts:
         is_expand: true
         is_required: true
-  - started_at:
+  - started_at: $STARTED_AT
       opts:
         is_expand: true
         is_required: true
-  - completed_at:
+  - completed_at: $COMPLETED_AT
       opts:
         is_expand: true
         is_required: true
-  - total_duration:
+  - total_duration: $TOTAL_DURATION
       opts:
         is_expand: true
         is_required: true
