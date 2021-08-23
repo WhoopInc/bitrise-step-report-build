@@ -94,51 +94,45 @@ inputs:
     opts:
       title: Github repository associated with build
       is_expand: true
-    is_required: true
+      is_required: true
   - branch: $BITRISE_GIT_BRANCH
     opts:
       title: Github branch associated with build
       is_expand: true
-    is_required: true
+      is_required: true
   - build_num: $BITRISE_BUILD_NUMBER
     opts:
       title: Build number associated with build
       is_expand: true
-    is_required: true
+      is_required: true
   - commit_sha: $BITRISE_GIT_COMMIT
       opts:
         title: Hash for commit that triggered build
         is_expand: true
-      is_required: true
+        is_required: true
   - status: $BITRISE_BUILD_STATUS
       opts:
         title: Result of build - can be either (0 - successful, 1 - failed)
         is_expand: true
-      is_required: true
+        is_required: true
   - build_url: $BITRISE_BUILD_URL
       opts:
         title: URL on bitrise.io that shows build details
         is_expand: true
-      is_required: true
+        is_required: true
   - github_username: $GIT_CLONE_COMMIT_AUTHOR_NAME
       opts:
         title: Github username linked with committer
         is_expand: true
-      is_required: true
+        is_required: true
   - message: $BITRISE_GIT_MESSAGE
       opts:
         title: The commit message, PR title or manual trigger message
         is_expand: true
-      is_required: true
+        is_required: true
   - auth_token: $EZ_DEPLOY_AUTH_TOKEN
       opts:
         title: Token used to authenticate with EZDeploy
         is_sensitive: true
         is_expand: true
-      is_required: true
-
-outputs:
-  - response_code:
-    opts:
-      title: "HTTP Response Code"
-      summary: Reponse code returned by EZDeploy API
+        is_required: true
