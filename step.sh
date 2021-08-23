@@ -8,7 +8,7 @@ cd "${CURR_DIR}"
 pip install requests
 
 echo 'running script'
-python ./send.py
+python3 ./send.py
 
 if [ $? != 0 ];
 then
