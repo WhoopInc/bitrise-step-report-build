@@ -18,7 +18,7 @@ build_url = os.environ.get('build_url')
 github_username = os.environ.get('github_username')
 url = os.environ.get('url')
 print(os.environ.keys()
-token = os.environ.get('EZDEPLOY_AUTH_TOKEN')
+token = os.environ.get('auth_token')
 ticket = None
 branch_match = re.search(jira_ticket_pattern, branch)
 message_match = re.search(jira_ticket_pattern, str(message))
