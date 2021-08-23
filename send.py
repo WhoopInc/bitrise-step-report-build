@@ -18,7 +18,7 @@ build_url = os.environ.get('build_url')
 github_username = os.environ.get('github_username')
 url = os.environ.get('url')
 print(os.environ.keys()
-EZDEPLOY_AUTH_TOKEN = os.environ.get('EZDEPLOY_AUTH_TOKEN')
+token = os.environ.get('EZDEPLOY_AUTH_TOKEN')
 ticket = None
 branch_match = re.search(jira_ticket_pattern, branch)
 message_match = re.search(jira_ticket_pattern, str(message))
@@ -39,7 +39,7 @@ payload = {
     "build_url": build_url,
     "github_username": github_username
 }
-request_headers = {'Authorization': EZDEPLOY_AUTH_TOKEN}
+request_headers = {'Authorization': token}
 r = requests.post(url, json=payload, headers=request_headers)
 print("response:")
 print(r)
