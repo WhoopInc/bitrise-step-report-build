@@ -2,7 +2,8 @@
 set -ex
 
 echo "Running python script"
-python send.py
+ls
+python ./send.py
 if [ $? != 0 ];
 then
     echo "exit 1"
