@@ -2,6 +2,7 @@ import os
 import requests
 import re
 
+print("Inside python script")
 jira_ticket_pattern = "[a-zA-Z]{1,}-\d{1,}"
 message = os.environ.get('message')
 branch = os.environ.get('branch')

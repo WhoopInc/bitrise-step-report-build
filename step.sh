@@ -1,6 +1,7 @@
 #!/bin/bash
 set -ex
 
+echo "Running python script"
 python send.py
 if [ $? != 0 ];
 then
