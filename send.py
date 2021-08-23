@@ -1,6 +1,7 @@
 import os
 import requests
 import re
+import sys
 
 print("Inside python script")
 jira_ticket_pattern = "[a-zA-Z]{1,}-\d{1,}"
@@ -16,6 +17,7 @@ total_duration_milliseconds = os.environ.get('total_duration')
 build_url = os.environ.get('build_url')
 github_username = os.environ.get('github_username')
 url = os.environ.get('url')
+print(os.environ.keys()
 EZDEPLOY_AUTH_TOKEN = os.environ.get('EZDEPLOY_AUTH_TOKEN')
 ticket = None
 branch_match = re.search(jira_ticket_pattern, branch)
