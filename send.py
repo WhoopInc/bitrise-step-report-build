@@ -45,8 +45,11 @@ print("response:")
 print(r)
 print("content:")
 print(r.text)
+print("url")
+print(url)
+print("request_headers")
+print(request_headers)
 if r.status_code != 200:
-    print(r.content)
     sys.exit(1)
 else:
     print("Build successfully sent!")

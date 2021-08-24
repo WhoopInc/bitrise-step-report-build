@@ -99,8 +99,9 @@ inputs:
       title: "The commit message, PR title or manual trigger message"
       is_expand: true
       is_required: true
-  - auth_token: $EZ_DEPLOY_AUTH_TOKEN
+  - auth_token: $EZDEPLOY_AUTH_TOKEN
     opts:
       title: "Token used to authenticate with EZDeploy"
+      sensitive: true
       is_expand: true
       is_required: true
