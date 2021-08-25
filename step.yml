@@ -98,7 +98,7 @@ inputs:
         Bitrise build url that shows additional details
       is_expand: true
       is_required: true
-  - github_username: $GIT_CLONE_COMMIT_AUTHOR_NAME
+  - github_username: $GIT_CLONE_COMMIT_COMMITER_NAME
     opts:
       title: "Github username"
       summary: |-
