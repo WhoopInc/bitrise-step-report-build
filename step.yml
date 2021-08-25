@@ -16,9 +16,6 @@ description: |
 website: https://github.com/WhoopInc/bitrise-step-report-build
 source_code_url: https://github.com/WhoopInc/bitrise-step-report-build
 support_url: https://github.com/WhoopInc/bitrise-step-report-build/issues
-host_os_tags:
-  - osx-10.10
-  - ubuntu-16.04
 project_type_tags:
   - android
   - ios
@@ -43,65 +40,85 @@ inputs:
       is_required: true
   - started_at: $STARTED_AT
     opts:
-      title: "Time build started at"
+      title: "Start time"
       summary: |-
         The time the build started at, in the format "%Y-%m-%dT%H:%M:%S.%3N%z"
       is_required: true
   - completed_at: $COMPLETED_AT
     opts:
-      title: "Time build completed at"
+      title: "End time"
       summary: |-
         The time the build completed at, in the format "%Y-%m-%dT%H:%M:%S.%3N%z"
       is_required: true
   - total_duration: $TOTAL_DURATION
     opts:
-      title: "Build duration in ms"
+      title: "Build duration"
       summary: |-
         (time completed at - time started at) in milliseconds
       is_required: true
   - repository: $BITRISEIO_GIT_REPOSITORY_SLUG
     opts:
-      title: "Github repository associated with build"
+      title: "Repository name"
+      summary: |-
+        The Github repository name associated with the build
       is_expand: true
       is_required: true
   - branch: $BITRISE_GIT_BRANCH
     opts:
-      title: "Github branch associated with build"
+      title: "Branch name"
+      summary: |-
+        The Github branch associated with the build
       is_expand: true
       is_required: true
   - build_num: $BITRISE_BUILD_NUMBER
     opts:
-      title: "Build number associated with build"
+      title: "Build number"
+      summary: |-
+        Build number of the build on Bitrise
       is_expand: true
       is_required: true
   - commit_sha: $BITRISE_GIT_COMMIT
     opts:
-      title: "Hash for commit that triggered build"
+      title: "Commit hash"
+      summary: |-
+        Github commit hash associated with build
       is_expand: true
       is_required: true
   - status: $BITRISE_BUILD_STATUS
     opts:
-      title: "Result of build - can be either (0 - successful, 1 - failed)"
+      title: "Build outcome"
+      summary: |-
+        Bitrise build result - can either be (0 - successful or 1 - failed)
       is_expand: true
       is_required: true
   - build_url: $BITRISE_BUILD_URL
     opts:
-      title: "URL on bitrise.io that shows build details"
+      title: "Build URL"
+      summary: |-
+        Bitrise build url that shows additional details
       is_expand: true
       is_required: true
   - github_username: $GIT_CLONE_COMMIT_AUTHOR_NAME
     opts:
-      title: "Github username linked with committer"
+      title: "Github username"
+      summary: |-
+        Github username linked to commit
+      description: |-
+        This is different and unrelated to the Git config username, this is the username that identifies a Github account
       is_expand: true
       is_required: true
   - message: $BITRISE_GIT_MESSAGE
     opts:
-      title: "The commit message, PR title or manual trigger message"
+      title: "Github message"
+      summary: |-
+        The commit message, pull request title or the message you specified if you triggered the build manually.
       is_expand: true
       is_required: true
   - auth_token: $EZDEPLOY_AUTH_TOKEN
     opts:
-      title: "Token used to authenticate with EZDeploy"
+      title: "EZDeploy auth token"
+      summary: |-
+        Authentication token used in POST request to authenticate with the EZDeploy API
       sensitive: true
       is_expand: true
       is_required: true
