@@ -27,6 +27,8 @@ if branch_match is not None:
     ticket=branch_match.group(0)
 elif message_match is not None:
     ticket=message_match.group(0)
+if ticket is not None:
+    ticket=ticket.upper()
 
 payload = {
     "repository": repository,
