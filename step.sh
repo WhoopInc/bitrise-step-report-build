@@ -13,6 +13,9 @@ echo "${STARTED_AT}"
 echo "${COMPLETED_AT}"
 echo "${TOTAL_DURATION}"
 echo "${$BITRISE_GIT_MESSAGE}"
+echo ${$BITRISE_GIT_MESSAGE}
+echo $BITRISE_GIT_MESSAGE
+echo "$BITRISE_GIT_MESSAGE"
 
 echo 'executing script'
 python3 ./send.py
