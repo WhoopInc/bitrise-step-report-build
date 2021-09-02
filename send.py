@@ -29,11 +29,11 @@ elif message_match is not None:
     ticket=message_match.group(0)
 if ticket is not None:
     ticket=ticket.upper()
-if github_username = '':
+if github_username == '':
     github_username = None
-if total_duration_milliseconds = '':
+if total_duration_milliseconds == '':
     total_duration_milliseconds = None
-if completed_at = '':
+if completed_at == '':
     completed_at = None
 
 payload = {
