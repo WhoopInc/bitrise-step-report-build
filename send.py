@@ -51,7 +51,7 @@ r = requests.post(url, json=payload, headers=request_headers)
 
 if r.status_code != 200:
     print('Unable to send build info to {}'.format(url))
-    print('Response: {}'.format(response.text))
+    print('Response: {}'.format(r.text))
     sys.exit(1)
 else:
     print("Build successfully sent!")
