@@ -29,6 +29,12 @@ elif message_match is not None:
     ticket=message_match.group(0)
 if ticket is not None:
     ticket=ticket.upper()
+if github_username = '':
+    github_username = None
+if total_duration_milliseconds = '':
+    total_duration_milliseconds = None
+if completed_at = '':
+    completed_at = None
 
 payload = {
     "repository": repository,
@@ -51,7 +57,7 @@ r = requests.post(url, json=payload, headers=request_headers)
 
 if r.status_code != 200:
     print('Unable to send build info to {}'.format(url))
-    print('Response: {}'.format(response.text))
+    print('Response: {}'.format(r.text))
     sys.exit(1)
 else:
     print("Build successfully sent!")
