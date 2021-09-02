@@ -12,7 +12,6 @@ echo 'listing time metrics'
 echo "${STARTED_AT}"
 echo "${COMPLETED_AT}"
 echo "${TOTAL_DURATION}"
-echo ${$BITRISE_GIT_MESSAGE}
 echo $BITRISE_GIT_MESSAGE
 echo "$BITRISE_GIT_MESSAGE"
 
