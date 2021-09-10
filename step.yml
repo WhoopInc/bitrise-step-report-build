@@ -84,13 +84,25 @@ inputs:
         Github commit hash associated with build
       is_expand: true
       is_required: true
+  - lifecycle: "END"
+    opts:
+      title: "Build reporting lifecycle"
+      summary: |-
+        Can either be START or END of build reporting lifecycle
+      value_options:
+      - START
+      - END
   - status: $BITRISE_BUILD_STATUS
     opts:
-      title: "Build outcome"
+      title: "Build status"
       summary: |-
-        Bitrise build result - can either be (0 - successful or 1 - failed)
+        Bitrise build result - can either be 0 (SUCCESSFUL), 1 (FAILED) or 2 (PENDING)
       is_expand: true
       is_required: true
+      value_options:
+      - 0
+      - 1
+      - 2
   - build_url: $BITRISE_BUILD_URL
     opts:
       title: "Build URL"
