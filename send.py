@@ -3,13 +3,19 @@ import requests
 import re
 import sys
 
+status_map = {
+    0: "SUCCESSFUL",
+    1: "FAILED",
+    2: "PENDING"
+}
+
 print("Executing send.py")
 message = os.environ.get('message')
 branch = os.environ.get('branch')
 repository = os.environ.get('repository')
 build_num = os.environ.get('build_num')
 commit_sha = os.environ.get('commit_sha')
-status = os.environ.get('status')
+status = status_map[os.environ.get('status')]
 started_at = os.environ.get('started_at')
 completed_at = os.environ.get('completed_at')
 total_duration_milliseconds = os.environ.get('total_duration')
@@ -17,6 +23,7 @@ build_url = os.environ.get('build_url')
 github_username = os.environ.get('github_username')
 url = os.environ.get('url')
 auth_token = os.environ.get('auth_token')
+lifecycle = os.environ.get('lifecycle')
 
 print("Extracting jira ticket")
 jira_ticket_pattern = "[a-zA-Z]{1,}-\d{1,}"
@@ -35,20 +42,32 @@ if total_duration_milliseconds == '':
     total_duration_milliseconds = None
 if completed_at == '':
     completed_at = None
-
-payload = {
-    "repository": repository,
-    "branch": branch,
-    "build_num": build_num,
-    "commit_sha": commit_sha,
-    "status": status,
-    "started_at": started_at,
-    "completed_at": completed_at,
-    "total_duration_milliseconds": total_duration_milliseconds,
-    "jira_ticket": ticket,
-    "build_url": build_url,
-    "github_username": github_username
-}
+if lifecycle is 'START':
+    payload = {
+        "repository": repository,
+        "branch": branch,
+        "build_num": build_num,
+        "commit_sha": commit_sha,
+        "status": status,
+        "started_at": started_at,
+        "jira_ticket": ticket,
+        "build_url": build_url,
+        "github_username": github_username
+    }
+else:
+    payload = {
+        "repository": repository,
+        "branch": branch,
+        "build_num": build_num,
+        "commit_sha": commit_sha,
+        "status": status,
+        "started_at": started_at,
+        "completed_at": completed_at,
+        "total_duration_milliseconds": total_duration_milliseconds,
+        "jira_ticket": ticket,
+        "build_url": build_url,
+        "github_username": github_username
+    }
 print('Payload: {}'.format(payload))
 
 print('Sending payload to {}'.format(url))
