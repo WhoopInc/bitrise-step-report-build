@@ -74,7 +74,6 @@ print('Sending payload to {}'.format(url))
 request_headers = {'Authorization': auth_token}
 r = requests.post(url, json=payload, headers=request_headers)
 
-sys.exit(1)
 if r.status_code != 200:
     print('Unable to send build info to {}'.format(url))
     print('Response: {}'.format(r.text))
