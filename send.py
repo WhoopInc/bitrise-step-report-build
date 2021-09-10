@@ -42,7 +42,7 @@ if total_duration_milliseconds == '':
     total_duration_milliseconds = None
 if completed_at == '':
     completed_at = None
-if lifecycle is 'START':
+if lifecycle == 'START':
     payload = {
         "repository": repository,
         "branch": branch,
