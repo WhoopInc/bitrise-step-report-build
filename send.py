@@ -4,9 +4,9 @@ import re
 import sys
 
 status_map = {
-    0: "SUCCESSFUL",
-    1: "FAILED",
-    2: "PENDING"
+    '0': "SUCCESSFUL",
+    '1': "FAILED",
+    '2': "PENDING"
 }
 
 print("Executing send.py")
