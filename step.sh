@@ -11,11 +11,11 @@ pip3 install requests
 echo 'executing script'
 python3 ./send.py
 
-echo "exit 1"
+exit 1
 if [ $? != 0 ];
 then
   echo "FAILURE"
-  echo "exit 1"
+  exit 1
 fi
 echo "SUCCESSFUL"
-echo "exit 0"
+exit 0
