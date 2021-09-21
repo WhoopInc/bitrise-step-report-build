@@ -134,3 +134,17 @@ inputs:
       sensitive: true
       is_expand: true
       is_required: true
+  - version_code:
+    opts:
+      title: "Version Code"
+      summary: |-
+        The internal code of the version associated with the completed build
+      is_expand: true
+      is_required: false
+  - version_name:
+    opts:
+      title: "Version Name"
+      summary: |-
+        The external name of the version associated with the completed build
+      is_expand: true
+      is_required: false
