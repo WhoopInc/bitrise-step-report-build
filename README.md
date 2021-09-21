@@ -79,7 +79,7 @@ and the end of a build to prod as such:
 This should be sent at the end of the workflow, after any other steps
 - The only required input is the url input, however the step implicitly takes in other environment variables.   
 -  The `lifecyle` step input defaults to `END` and the status input step defaults to `$BITRISE_BUILD_STATUS` in order to maintain
-  reverse compatibility before storing `PENDING` states.  
+  reverse compatibility before storing `PENDING` states.
 - The `status` is explicitly set to `2` (`PENDING`) while reporting the start of a build. The reason the default value
   (`BITRISE_BUILD_STATUS`) is not used is due to the fact that it is a bitrise environment var that can only hold two states: `0` - `SUCCESSFUL`
   and `1` - `FAILED`. Thus, we send in `2` - `PENDING` explicitly here.
@@ -121,6 +121,18 @@ This should be sent at the end of the workflow, after any other steps
      is_skippable: true
   ```
   - The `started_at` step should be the first step to run in the workflow in order to accurately measure build duration.
-  - Conversely, he `completed_at` and `total_duration` step should be the last step in the workflow.
+  - Conversely, the `completed_at` and `total_duration` step should be the last step in the workflow.
+  - Build version information can optionally be captured during the `END` step, by providing `version_code` and
+    `version_name` inputs. For example, an Android project may use the following configuration:
+    ```yaml
+    - git::https://github.com/WhoopInc/bitrise-step-report-build.git@master:
+        title: Send build end to prod ez-deploy
+        inputs:
+          - url: $PROD_EZDEPLOY_BUILD_REPORT_URL
+          - version_code: $ANDROID_VERSION_CODE
+          - version_name: $ANDROID_VERSION_NAME
+        is_always_run: true
+        is_skippable: true
+    ```
 - Setting both `is_always_run` and `is_skippable` to `true` is recommended to report failing tests to EZDeploy
 as well as preventing reporting failures from failing the overall build as a whole.
