@@ -24,6 +24,8 @@ github_username = os.environ.get('github_username')
 url = os.environ.get('url')
 auth_token = os.environ.get('auth_token')
 lifecycle = os.environ.get('lifecycle')
+version_code = os.environ.get('version_code')
+version_name = os.environ.get('version_name')
 
 print("Extracting jira ticket")
 jira_ticket_pattern = "[a-zA-Z]{1,}-\d{1,}"
@@ -42,6 +44,11 @@ if total_duration_milliseconds == '':
     total_duration_milliseconds = None
 if completed_at == '':
     completed_at = None
+if version_code == '':
+    version_code = None
+if version_name == '':
+    version_name = None
+
 if lifecycle == 'START':
     payload = {
         "repository": repository,
@@ -66,7 +73,9 @@ else:
         "total_duration_milliseconds": total_duration_milliseconds,
         "jira_ticket": ticket,
         "build_url": build_url,
-        "github_username": github_username
+        "github_username": github_username,
+        "version_code": version_code,
+        "version_name": version_name
     }
 print('Payload: {}'.format(payload))
 
