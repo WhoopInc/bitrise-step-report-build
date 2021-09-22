@@ -140,7 +140,7 @@ This should be sent at the end of the workflow, after any other steps
     - git::https://github.com/WhoopInc/bitrise-step-report-build.git@master:
         title: Send build end to prod ez-deploy
         inputs:
-          - artifact_s3_url: "s3://whoop-builds/basic-android/bitrise-build/14.apk"
+          - artifact_s3_url: "s3://whoop-builds/$BITRISEIO_GIT_REPOSITORY_SLUG/$BITRISE_GIT_BRANCH/$BITRISE_BUILD_NUMBER.apk"
         is_always_run: true
         is_skippable: true
     ```
