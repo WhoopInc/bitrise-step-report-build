@@ -78,7 +78,7 @@ and the end of a build to prod as such:
 ```
 This should be sent at the end of the workflow, after any other steps
 - The only required input is the url input, however the step implicitly takes in other environment variables.   
--  The `lifecyle` step input defaults to `END` and the status input step defaults to `$BITRISE_BUILD_STATUS` in order to maintain
+- The `lifecyle` step input defaults to `END` and the status input step defaults to `$BITRISE_BUILD_STATUS` in order to maintain
   reverse compatibility before storing `PENDING` states.
 - The `status` is explicitly set to `2` (`PENDING`) while reporting the start of a build. The reason the default value
   (`BITRISE_BUILD_STATUS`) is not used is due to the fact that it is a bitrise environment var that can only hold two states: `0` - `SUCCESSFUL`
@@ -131,6 +131,16 @@ This should be sent at the end of the workflow, after any other steps
           - url: $PROD_EZDEPLOY_BUILD_REPORT_URL
           - version_code: $ANDROID_VERSION_CODE
           - version_name: $ANDROID_VERSION_NAME
+        is_always_run: true
+        is_skippable: true
+    ```
+  - URL's to S3 artifacts can optionally be captured during the `END` step, by providing `artifact_s3_url` as a step input.
+    For example, an Android project may use the following configuration:
+    ```yaml
+    - git::https://github.com/WhoopInc/bitrise-step-report-build.git@master:
+        title: Send build end to prod ez-deploy
+        inputs:
+          - artifact_s3_url: "s3://whoop-builds/basic-android/bitrise-build/14.apk"
         is_always_run: true
         is_skippable: true
     ```

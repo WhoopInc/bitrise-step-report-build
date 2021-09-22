@@ -26,6 +26,7 @@ auth_token = os.environ.get('auth_token')
 lifecycle = os.environ.get('lifecycle')
 version_code = os.environ.get('version_code')
 version_name = os.environ.get('version_name')
+artifact_s3_url = os.environ.get('artifact_s3_url')
 
 print("Extracting jira ticket")
 jira_ticket_pattern = "[a-zA-Z]{1,}-\d{1,}"
@@ -48,6 +49,8 @@ if version_code == '':
     version_code = None
 if version_name == '':
     version_name = None
+if artifact_s3_url == '':
+    artifact_s3_url = None
 
 if lifecycle == 'START':
     payload = {
@@ -75,7 +78,8 @@ else:
         "build_url": build_url,
         "github_username": github_username,
         "version_code": version_code,
-        "version_name": version_name
+        "version_name": version_name,
+        "artifact_s3_url": artifact_s3_url
     }
 print('Payload: {}'.format(payload))
 
