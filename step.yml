@@ -148,3 +148,10 @@ inputs:
         The external name of the version associated with the completed build
       is_expand: true
       is_required: false
+  - artifact_s3_url:
+    opts:
+      title: "Artifact S3 Url"
+      summary: |-
+        The URL to the S3 bucket that stores the bundled artifact
+      is_expand: true
+      is_required: false
