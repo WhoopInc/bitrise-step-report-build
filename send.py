@@ -24,6 +24,7 @@ github_username = os.environ.get('github_username')
 url = os.environ.get('url')
 auth_token = os.environ.get('auth_token')
 lifecycle = os.environ.get('lifecycle')
+variant = os.environ.get('variant')
 version_code = os.environ.get('version_code')
 version_name = os.environ.get('version_name')
 artifact_s3_url = os.environ.get('artifact_s3_url')
@@ -45,6 +46,8 @@ if total_duration_milliseconds == '':
     total_duration_milliseconds = None
 if completed_at == '':
     completed_at = None
+if variant == '':
+    variant = None
 if version_code == '':
     version_code = None
 if version_name == '':
@@ -62,7 +65,8 @@ if lifecycle == 'START':
         "started_at": started_at,
         "jira_ticket": ticket,
         "build_url": build_url,
-        "github_username": github_username
+        "github_username": github_username,
+        "variant": variant
     }
 else:
     payload = {
@@ -77,6 +81,7 @@ else:
         "jira_ticket": ticket,
         "build_url": build_url,
         "github_username": github_username,
+        "variant": variant,
         "version_code": version_code,
         "version_name": version_name,
         "artifact_s3_url": artifact_s3_url
