@@ -141,6 +141,13 @@ inputs:
         The internal code of the version associated with the completed build
       is_expand: true
       is_required: false
+  - variant:
+    opts:
+      title: "Variant"
+      summary: |-
+        The variant of the application artifact being built
+      is_expand: true
+      is_required: false
   - version_name:
     opts:
       title: "Version Name"
