@@ -28,6 +28,7 @@ variant = os.environ.get('variant')
 version_code = os.environ.get('version_code')
 version_name = os.environ.get('version_name')
 artifact_s3_url = os.environ.get('artifact_s3_url')
+aab_s3_url = os.environ.get('aab_s3_url')
 
 print("Extracting jira ticket")
 jira_ticket_pattern = "[a-zA-Z]{1,}-\d{1,}"
@@ -84,7 +85,8 @@ else:
         "variant": variant,
         "version_code": version_code,
         "version_name": version_name,
-        "artifact_s3_url": artifact_s3_url
+        "artifact_s3_url": artifact_s3_url,
+        "aab_s3_url": aab_s3_url
     }
 print('Payload: {}'.format(payload))
 
