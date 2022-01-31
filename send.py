@@ -94,7 +94,7 @@ print('Sending payload to {}'.format(url))
 retry_strategy = Retry(
     total=3,
     status_forcelist=[429, 502, 503, 504],
-    allowed_methods=["POST", "PUT"],
+    method_whitelist=["POST", "PUT"],
     raise_on_status=True,
     backoff_factor= 10
 )
