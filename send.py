@@ -2,6 +2,8 @@ import os
 import requests
 import re
 import sys
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
 
 status_map = {
     '0': "SUCCESSFUL",
@@ -89,8 +91,18 @@ else:
 print('Payload: {}'.format(payload))
 
 print('Sending payload to {}'.format(url))
+retry_strategy = Retry(
+    total=3,
+    status_forcelist=[429, 502, 503, 504],
+    method_whitelist=["POST", "PUT"],
+    raise_on_status=True,
+    backoff_factor= 10
+)
+adapter = HTTPAdapter(max_retries=retry_strategy)
+http = requests.Session()
+http.mount("https://", adapter)
 request_headers = {'Authorization': auth_token}
-r = requests.post(url, json=payload, headers=request_headers)
+r = http.post(url, json=payload, headers=request_headers)
 
 if r.status_code != 200:
     print('Unable to send build info to {}'.format(url))
