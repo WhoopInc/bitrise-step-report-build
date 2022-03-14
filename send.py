@@ -14,6 +14,7 @@ status_map = {
 print("Executing send.py")
 message = os.environ.get('message')
 branch = os.environ.get('branch')
+git_tag = os.environ.get('git_tag')
 repository = os.environ.get('repository')
 build_num = os.environ.get('build_num')
 commit_sha = os.environ.get('commit_sha')
@@ -37,11 +38,12 @@ ticket = None
 branch_match = re.search(jira_ticket_pattern, branch)
 message_match = re.search(jira_ticket_pattern, str(message))
 if branch_match is not None:
-    ticket=branch_match.group(0)
+    ticket = branch_match.group(0)
 elif message_match is not None:
-    ticket=message_match.group(0)
+    ticket = message_match.group(0)
+
 if ticket is not None:
-    ticket=ticket.upper()
+    ticket = ticket.upper()
 if github_username == '':
     github_username = None
 if total_duration_milliseconds == '':
@@ -56,11 +58,21 @@ if version_name == '':
     version_name = None
 if artifact_s3_url == '':
     artifact_s3_url = None
+if branch == '':
+    branch = None
+if git_tag == '':
+    git_tag = None
+
+print("Checking branch or git tag is set.")
+if branch is None and git_tag is None:
+    print('Branch or git tag must be set!')
+    sys.exit(1)
 
 if lifecycle == 'START':
     payload = {
         "repository": repository,
         "branch": branch,
+        "git_tag": git_tag,
         "build_num": build_num,
         "commit_sha": commit_sha,
         "status": status,
@@ -74,6 +86,7 @@ else:
     payload = {
         "repository": repository,
         "branch": branch,
+        "git_tag": git_tag,
         "build_num": build_num,
         "commit_sha": commit_sha,
         "status": status,

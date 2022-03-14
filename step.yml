@@ -69,7 +69,7 @@ inputs:
       summary: |-
         The Github branch associated with the build
       is_expand: true
-      is_required: true
+      is_required: false
   - build_num: $BITRISE_BUILD_NUMBER
     opts:
       title: "Build number"
@@ -84,6 +84,13 @@ inputs:
         Github commit hash associated with build
       is_expand: true
       is_required: true
+  - git_tag: $BITRISE_GIT_TAG
+    opts:
+      title: "Git tag name"
+      summary: |-
+        The Github tag associated with the build
+      is_expand: true
+      is_required: false
   - lifecycle: "END"
     opts:
       title: "Build reporting lifecycle"
