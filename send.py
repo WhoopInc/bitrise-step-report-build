@@ -63,6 +63,10 @@ if branch == '':
 if git_tag == '':
     git_tag = None
 
+if branch is None and git_tag is None:
+    print('Branch or git tag must be set!')
+    sys.exit(1)
+
 if lifecycle == 'START':
     payload = {
         "repository": repository,
