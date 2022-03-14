@@ -50,14 +50,12 @@ inputs:
       summary: |-
         The time the build completed at, in the format "%Y-%m-%dT%H:%M:%S.%3N%z"
       is_required: true
-      skip_if_empty: true
   - total_duration: $TOTAL_DURATION
     opts:
       title: "Build duration"
       summary: |-
         (time completed at - time started at) in milliseconds
       is_required: true
-      skip_if_empty: true
   - repository: $BITRISEIO_GIT_REPOSITORY_SLUG
     opts:
       title: "Repository name"
@@ -72,7 +70,6 @@ inputs:
         The Github branch associated with the build
       is_expand: true
       is_required: false
-      skip_if_empty: true
   - build_num: $BITRISE_BUILD_NUMBER
     opts:
       title: "Build number"
@@ -94,7 +91,6 @@ inputs:
         The Github tag associated with the build
       is_expand: true
       is_required: false
-      skip_if_empty: true
   - lifecycle: "END"
     opts:
       title: "Build reporting lifecycle"
@@ -130,7 +126,6 @@ inputs:
         This is different and unrelated to the Git config username, this is the username that identifies a Github account
       is_expand: true
       is_required: true
-      skip_if_empty: true
   - message: $BITRISE_GIT_MESSAGE
     opts:
       title: "Github message"
@@ -153,7 +148,6 @@ inputs:
         The internal code of the version associated with the completed build
       is_expand: true
       is_required: false
-      skip_if_empty: true
   - variant:
     opts:
       title: "Variant"
@@ -161,7 +155,6 @@ inputs:
         The variant of the application artifact being built
       is_expand: true
       is_required: false
-      skip_if_empty: true
   - version_name:
     opts:
       title: "Version Name"
@@ -169,7 +162,6 @@ inputs:
         The external name of the version associated with the completed build
       is_expand: true
       is_required: false
-      skip_if_empty: true
   - artifact_s3_url:
     opts:
       title: "Artifact S3 Url"
@@ -177,4 +169,3 @@ inputs:
         The URL to the S3 bucket that stores the bundled artifact
       is_expand: true
       is_required: false
-      skip_if_empty: true

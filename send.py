@@ -13,24 +13,24 @@ status_map = {
 
 print("Executing send.py")
 message = os.environ.get('message')
-branch = os.environ.get('branch', None)
-git_tag = os.environ.get('git_tag', None)
+branch = os.environ.get('branch')
+git_tag = os.environ.get('git_tag')
 repository = os.environ.get('repository')
 build_num = os.environ.get('build_num')
 commit_sha = os.environ.get('commit_sha')
 status = status_map[os.environ.get('status')]
 started_at = os.environ.get('started_at')
-completed_at = os.environ.get('completed_at', None)
-total_duration_milliseconds = os.environ.get('total_duration', None)
+completed_at = os.environ.get('completed_at')
+total_duration_milliseconds = os.environ.get('total_duration')
 build_url = os.environ.get('build_url')
-github_username = os.environ.get('github_username', None)
+github_username = os.environ.get('github_username')
 url = os.environ.get('url')
 auth_token = os.environ.get('auth_token')
 lifecycle = os.environ.get('lifecycle')
-variant = os.environ.get('variant', None)
-version_code = os.environ.get('version_code', None)
-version_name = os.environ.get('version_name', None)
-artifact_s3_url = os.environ.get('artifact_s3_url', None)
+variant = os.environ.get('variant')
+version_code = os.environ.get('version_code')
+version_name = os.environ.get('version_name')
+artifact_s3_url = os.environ.get('artifact_s3_url')
 
 print("Extracting jira ticket")
 jira_ticket_pattern = "[a-zA-Z]{1,}-\d{1,}"
@@ -41,8 +41,27 @@ if branch_match is not None:
     ticket = branch_match.group(0)
 elif message_match is not None:
     ticket = message_match.group(0)
+
 if ticket is not None:
     ticket = ticket.upper()
+if github_username == '':
+    github_username = None
+if total_duration_milliseconds == '':
+    total_duration_milliseconds = None
+if completed_at == '':
+    completed_at = None
+if variant == '':
+    variant = None
+if version_code == '':
+    version_code = None
+if version_name == '':
+    version_name = None
+if artifact_s3_url == '':
+    artifact_s3_url = None
+if branch == '':
+    branch = None
+if git_tag == '':
+    git_tag = None
 
 print("Checking branch or git tag is set.")
 if branch is None and git_tag is None:
